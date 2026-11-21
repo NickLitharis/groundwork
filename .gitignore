@@ -1,0 +1,25 @@
+# Local secrets; keep example configuration trackable
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local authoring research and evaluations; not part of the published suite
+/research_notes/
+/reports/
+/evals/
+/*-principles/evals/
+*-workspace/
+
+# Editor backups and operating-system metadata
+*~
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

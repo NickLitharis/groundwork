@@ -1,0 +1,26 @@
+# Sources and evidence boundaries
+
+This reference separates inspected chapter advice, operational documentation, and synthesis. The material supports conditional reasoning, not universal numerical settings or a claim that this skill improves agent outcomes.
+
+## Inspected chapters and practitioner guidance
+
+- Google, *Site Reliability Engineering*, Chapter 4, “Service Level Objectives.” The complete online chapter ties objectives to user needs, recommends a few well-defined SLIs and distribution-aware latency, and frames error budgets as a product/operations decision. It warns against absolutes and targets copied from current performance; correctness and durability can matter alongside availability. Google's operating model is a practitioner account, not a universal mandate. [Chapter 4](https://sre.google/sre-book/service-level-objectives/).
+- Google, *Site Reliability Engineering*, Chapter 21, “Handling Overload.” The complete chapter covers load/resource signals, throttling, retry budgets, and choosing retry behavior according to overload scope. Its attempt counts and percentages are Google implementation examples, not defaults. [Chapter 21](https://sre.google/sre-book/handling-overload/).
+- Google, *Site Reliability Engineering*, Chapter 22, “Addressing Cascading Failures.” The complete chapter explains positive feedback from overload, missed deadlines, retries, and resource exhaustion; it discusses bounded queues, shedding/degradation, capacity work, and testing fallback paths. It does not establish one queue limit for all systems. [Chapter 22](https://sre.google/sre-book/addressing-cascading-failures/).
+- Google, *Site Reliability Engineering*, Chapter 26, “Data Integrity: What You Read Is What You Wrote.” The complete chapter distinguishes availability, correctness, and durability; warns that replication can reproduce deletion/corruption; and emphasizes tested recovery, restore time, recovery point, and cross-store relationships. Google examples are dated and system-specific. [Chapter 26](https://sre.google/sre-book/data-integrity/).
+- AWS Builder's Library, “Timeouts, retries, and backoff with jitter” (published/updated 2019). This practitioner article explains partial failure and ambiguous timeouts, side-effect duplication, bounded retry/backoff, and retry amplification. It recommends idempotency for retryable operations; its guidance must be checked against the actual API contract. [Article](https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/).
+- Apache Kafka 4.4 design documentation, “Message Delivery Semantics.” Current documentation specifies idempotent producer and Kafka transaction boundaries, and explains that external destinations must cooperate or make repeated effects idempotent. This guarantee is specific to Kafka and cooperating sinks, not arbitrary end-to-end effects. [Versioned guide](https://kafka.apache.org/44/design/design/).
+
+## Synthesis and boundaries
+
+A total deadline, bounded retry budget, backoff, jitter, and bounded concurrency/queues synthesize the SRE overload/cascade mechanisms with AWS timeout and retry guidance. Exact mechanisms depend on the call graph, load model, and failure scope. Avoid independent retry loops that multiply work; don't copy Google or AWS parameter values without measuring the system.
+
+Durable idempotency is a design inference from ambiguous commits and scoped transaction guarantees: define identity, bind it to the intended payload, state the deduplication scope and retention horizon, and couple the record with the state transition when feasible. No source cited here specifies a universal storage schema or retention length. A system may instead resolve status before retrying or use a simpler transaction boundary.
+
+An SLO describes tolerated service outcomes; it does not override hard integrity, safety, legal, or privacy invariants. Recovery planning follows SRE's distinction between replication and recoverability, with retention and recovery targets set by the actual obligations. Do not infer specific distributed-systems claims from *Designing Data-Intensive Applications*, 2nd ed.: publication and table-of-contents access were confirmed, but chapter prose was not accessible or inspected.
+
+## Decision examples: why and how to check
+
+1. **A one-shot local file conversion has no remote side effects.** Why: complex retry infrastructure addresses no identified distributed failure. How to check: ensure interrupted output cannot masquerade as complete, and confirm rerun behavior. A simple atomic replacement may suffice.
+2. **A request times out after a state-changing provider call.** Why: timeout does not establish whether the provider committed. How to check: inspect that provider's idempotency identity/payload rules and retention window; test repeated request, conflicting payload, and status reconciliation. If no safe retry contract exists, surface ambiguity and reconcile rather than assuming rollback.
+3. **An asynchronous service overloads on retries.** Why: retry traffic and queueing can amplify a dependency outage. How to check: observe queue age/depth and resource pressure, test deadline and retry-budget exhaustion, and verify concurrency bounds and recovery behavior under load. Tune values to measured capacity rather than transplanting a book example.
