@@ -237,3 +237,8 @@ Principles mentioned, lines generated, and successful discovery are not evidence
 Groundwork is the suite name; skill identifiers remain unchanged. Historically, `engineering-fundamentals` became `engineering-principles` and `scope-and-plan` became `planning-principles`. The eight specialists are additions, not renames of existing workflow skills. Historical evaluation artifacts retain their original names, inputs, and hashes. Use fresh workspaces for new comparisons.
 
 </details>
+
+## License
+
+Groundwork's original content is available under the [MIT License](LICENSE).
+Cited books and third-party material retain their respective licenses and copyrights.
