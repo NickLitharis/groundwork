@@ -1,6 +1,6 @@
 ---
 name: planning-principles
-description: Apply software-engineering fundamentals and Unix philosophy to scope and plan coding work. Use when requirements are ambiguous, a change has consequential dependencies or risks, or the user asks for a scope, implementation plan, feasibility assessment, or work breakdown. Define outcomes, boundaries, acceptance evidence, uncertainty, and verifiable increments. Avoid formal planning for trivial, well-understood edits.
+description: Use when requirements are ambiguous, a change has real dependencies or risk, or the user asks for a scope, plan, feasibility check, or work breakdown. Defines outcomes, boundaries, and acceptance evidence. Not for trivial edits.
 ---
 
 # Planning Principles

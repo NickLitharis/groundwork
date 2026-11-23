@@ -1,6 +1,6 @@
 ---
 name: documentation-principles
-description: Use when writing or reviewing documentation for a program, library, or project; deciding what needs documenting; or choosing how documentation is organized. Organizes docs by the reader's need (tutorial, how-to, reference, explanation). Not a guide to a specific documentation toolchain or static site generator.
+description: Use when writing or reviewing documentation, deciding what to document, or organizing docs by reader need: tutorial, how-to, reference, or explanation. Also covers agent-facing project docs. Not a toolchain guide.
 ---
 
 # Organize documentation by the reader's need
@@ -43,9 +43,5 @@ A project's agent instructions file (such as a CLAUDE.md) should contain what an
 - Explanation buried inside a how-to, so the task steps are hard to find.
 - Documentation that describes intended behavior rather than actual behavior.
 - Documentation maintained separately from the code, so it drifts.
-
-## Scope
-
-The book's chapter on documentation discusses formatting toolchains (troff, markup, and WYSIWYG tools) and their history. Those details are dated and are not distilled here. The current docs-as-code practice (Gentle, *Docs Like Code*; *Docs for Developers*) was not inspected for this skill and is not cited for specific claims.
 
 For the scope and limits of the sources, see [sources](references/sources.md). Related disciplines: [interface](../interface-principles/SKILL.md) for the interface being documented, [evolution](../evolution-principles/SKILL.md) for documentation of changing contracts, [testing](../testing-principles/SKILL.md) for checking that examples still work.

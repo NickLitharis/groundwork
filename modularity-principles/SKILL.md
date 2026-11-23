@@ -1,6 +1,6 @@
 ---
 name: modularity-principles
-description: Use when splitting a system into components, deciding where a module boundary belongs, reviewing an interface between parts, or judging whether a module is too thin, too large, or leaking its internals. Guides deep modules, information hiding, and thin glue. Not a rule about any particular module size or file count.
+description: Use when splitting a system into components, placing a module boundary, reviewing an interface between parts, or judging whether a module is too thin, too large, or leaks internals. Not a size rule.
 ---
 
 # Draw boundaries that hide decisions

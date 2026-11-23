@@ -30,3 +30,7 @@ This skill is an original synthesis based on the documentation framework below a
 
 - "Write explanations that show the mechanism" was extracted from a local explanation procedure (`ds-explain`). Inspected: its steps (size the reader's need, trace the runtime path, separate the record from inference, cite file and line) and rules (no guesses presented as fact, explain ideas rather than list functions).
 - "Write agent-facing project docs" was extracted from a local CLAUDE.md audit procedure (`claude-md-improver`). Inspected: its discovery and quality criteria (commands and workflows, architecture clarity, non-obvious patterns, conciseness, currency, actionability) and its rule to propose minimal, targeted additions. Its numeric scoring weights are not used here.
+
+## Scope note (moved from SKILL.md)
+
+The book's documentation chapter discusses formatting toolchains (troff, markup, and WYSIWYG tools) and their history. Those details are dated and are not distilled here. The current docs-as-code practice (Gentle, *Docs Like Code*; *Docs for Developers*) was not inspected for this skill and is not cited for specific claims.

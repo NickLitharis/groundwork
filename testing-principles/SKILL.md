@@ -1,6 +1,6 @@
 ---
 name: testing-principles
-description: Use when choosing or improving tests for software behavior, a bug fix, a new contract, a flaky suite, generated inputs, or a risky boundary. Focus on independent oracles, meaningful case selection, appropriate test boundaries, and honest interpretation of evidence. Complements project test workflows; not a mandate to write tests for unrelated prose or to use one testing method everywhere.
+description: Use when choosing or improving tests for behavior, a bug fix, a new contract, a flaky suite, generated inputs, or a risky boundary. Covers oracles, case selection, test boundaries, and reading evidence. Not one mandated method.
 ---
 
 # Testing Principles

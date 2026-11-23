@@ -1,6 +1,6 @@
 ---
 name: engineering-principles
-description: Apply fundamental software engineering principles and Unix philosophy when implementing features, fixing bugs, designing modules or APIs, refactoring, or reviewing code. Use especially for decisions about simplicity, abstraction, duplication, coupling, contracts, testing, dependencies, performance, CLI tools, and composability. Turn principles into concrete tradeoffs and verified changes, not ritual checklists. Not for prose-only edits or unrelated non-coding tasks.
+description: Use when implementing, fixing, refactoring, or reviewing code, or designing a module or API. Covers simplicity, contracts, complexity, abstraction, dependencies, and verified changes. Not prose-only edits.
 ---
 
 # Engineering Principles

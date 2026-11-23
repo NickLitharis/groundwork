@@ -1,6 +1,6 @@
 ---
 name: configuration-principles
-description: Use when adding settings to a program or tool: choosing where settings live (run-control files, environment variables, command-line flags), setting precedence between them, deciding which behavior to expose as configuration, or making a program's behavior predictable in scripts. Not a guide to any specific configuration framework or format.
+description: Use when adding settings to a program: where they live (files, environment, flags), how they override each other, which behavior to expose, or how scripts override them. Not a configuration framework.
 ---
 
 # Put each setting where its lifetime belongs
@@ -25,7 +25,7 @@ Later, more local settings override earlier, more global ones. Choose the locati
 
 ## Make scripted behavior predictable
 
-Provide a command-line option that overrides environment variables and run-control files. A script that passes that option behaves the same regardless of what is in a user's files. The book cites the `-e` option of `make` as an example of this pattern.
+Provide a command-line option that overrides environment variables and run-control files. A script that passes that option behaves the same regardless of what is in a user's files. The `-e` option of `make` is a common example of this pattern.
 
 Batch tools that act as filters or generators are usually fully configured by command-line options. Interactive programs with persistent state often rely on files and environment variables, with few options on each run. Match the pattern to how the tool is used.
 

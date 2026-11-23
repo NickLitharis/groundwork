@@ -1,6 +1,6 @@
 ---
 name: evolution-principles
-description: Use for behavior-preserving refactors, API or schema changes, data migrations, deprecations, and rollouts involving existing consumers, stored state, or multiple versions. Distinguish structural changes from intentional contract changes and reason about compatibility, cutover, and recovery. Not a general implementation skill or a substitute for repository-specific migration and release procedures.
+description: Use when a change must coexist with existing consumers, stored data, or multiple versions: API or schema changes, migrations, deprecations, rollouts. Separates refactors from contract changes. Not a release runbook.
 ---
 
 # Evolve software without confusing code cleanup with contract change

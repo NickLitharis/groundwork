@@ -1,6 +1,6 @@
 ---
 name: ui-design-principles
-description: Use when designing or reshaping a user interface's look, layout, typography, motion, or the words on screen: buttons, labels, errors, and empty states. Guides choices that are specific to the product and its users, and warns against defaults that make an interface look templated. Not a design-system inventory, a brand guide, or a substitute for user research or accessibility audits.
+description: Use when designing or reshaping a user interface's look, layout, type, motion, or on-screen words: buttons, labels, errors, empty states, feedback. Product-specific choices and accessibility floors. Not a brand guide.
 ---
 
 # Make interface choices for this product, not from habit

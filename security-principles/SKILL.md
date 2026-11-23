@@ -1,6 +1,6 @@
 ---
 name: security-principles
-description: Use when changing authentication, authorization, trust boundaries, sensitive data, dependencies, or security-relevant failure behavior. Helps identify assets and principals, constrain authority, enforce policy consistently, and choose usable protections. Not a universal checklist; apply standards only within their stated scope and use existing security review workflows where required.
+description: Use when changing authentication, authorization, trust boundaries, sensitive data, dependencies, or security-relevant failure behavior. Identifies assets and principals and constrains authority. Not a universal checklist.
 ---
 
 # Make security controls match the threat and boundary

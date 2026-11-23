@@ -1,6 +1,6 @@
 ---
 name: transparency-principles
-description: Use when designing a component to be inspected, debugged, or maintained; choosing how much abstraction to put over the data a program manipulates; deciding how failures should surface; or judging whether code can be understood by someone who did not write it. Not a logging or observability tooling guide.
+description: Use when designing a component to be inspected, debugged, or maintained: how much abstraction to place over data, keeping a failure's origin visible in code, or whether a dependency is live. Not observability tooling.
 ---
 
 # Make behavior visible

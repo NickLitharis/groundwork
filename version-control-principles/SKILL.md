@@ -1,6 +1,6 @@
 ---
 name: version-control-principles
-description: Apply safe, reviewable version-control practices when editing a repository, staging or committing work, choosing branches or integration methods, resolving conflicts, inspecting history, or recovering from mistakes. Preserve unrelated work and shared history; follow repository-specific contribution and commit procedures before generic Git habits.
+description: Use when editing a repository, staging or committing work, choosing a branch or integration method, resolving conflicts, inspecting history, or recovering from mistakes. Preserves unrelated work and shared history.
 ---
 
 # Version Control Principles

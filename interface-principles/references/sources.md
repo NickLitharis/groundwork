@@ -31,3 +31,7 @@ This skill is an original synthesis based on the interface chapter and related m
 
 - The stdout and stderr separation applies to any CLI intended for scripting.
 - The non-interactive path rule is an application of the book's scriptability guidance to modern tools.
+
+## Scope note (moved from SKILL.md)
+
+The book's discussion of CLI versus visual interfaces and its named interface patterns (filter, source, sink, cantrip, roguelike, CLI server) were listed but not reviewed in detail for this skill, so this skill does not distill them. HTTP and REST API design, including resource naming and status codes, is outside this skill's scope and needs its own sources.

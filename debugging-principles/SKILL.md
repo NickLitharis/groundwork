@@ -1,6 +1,6 @@
 ---
 name: debugging-principles
-description: Use when diagnosing a software failure, regression, intermittent incident, or unexplained behavior. Preserve reported evidence, compare causal hypotheses with discriminating predictions, and choose experiments that fit the available evidence. Especially useful when logs, production observations, version history, timing, or a stable reproduction offer different investigative paths. Complements debugging tools and workflows; not for ordinary implementation or test design alone.
+description: Use when diagnosing a failure, regression, intermittent incident, or unexplained behavior. Preserves evidence, compares causal hypotheses with discriminating predictions, and chooses experiments. Not ordinary implementation or test design.
 ---
 
 # Debugging Principles

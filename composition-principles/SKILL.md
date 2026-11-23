@@ -1,6 +1,6 @@
 ---
 name: composition-principles
-description: Use when designing programs or components that must work together, choosing between pipelines, filters, wrappers, subprocess calls, interactive child processes, sockets, or RPC, or deciding which side owns control flow and protocol state. Not a guide to shell scripting syntax or to any particular message broker.
+description: Use when choosing how programs or components connect: pipelines, filters, wrappers, subprocesses, interactive child processes, sockets, or RPC. Covers coupling and who owns control flow. Not shell syntax or a message broker.
 ---
 
 # Connect parts with the least coupling that works
@@ -18,7 +18,7 @@ Use the least coupled mechanism that handles the work:
 - **Shellout or pipeline**: one-way data flow, with no protocol during execution. Lowest coupling. Prefer it when the input is known in advance and the output is the result.
 - **Wrapper**: a thin layer that calls another program with fixed arguments to change its behavior. Use it to hide a complicated invocation, not to add logic.
 - **Interactive slave process**: two-way exchange through a child process's standard streams. Both sides need a state machine to avoid deadlocks and races. This is harder to test and debug than a shellout. Use it only when the protocol is trivially simple, or when the child speaks a proper application protocol.
-- **Client and server over a protocol**: separates responsibilities and lets each side change independently, at the cost of a defined protocol and handling of network failure. The book cites a database split into client and server as a way to hold complexity down.
+- **Client and server over a protocol**: separates responsibilities and lets each side change independently, at the cost of a defined protocol and handling of network failure. Splitting an application into a client and server can hold complexity down, because each side keeps its own responsibilities.
 
 ## Make the connection debuggable
 

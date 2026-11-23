@@ -1,6 +1,6 @@
 ---
 name: performance-principles
-description: Use when investigating slow or resource-heavy software, setting or changing performance objectives, comparing implementations, diagnosing scalability or benchmark regressions, or deciding whether optimization is worthwhile. Guides workload-based profiling and correctness-preserving tradeoffs. Not a language-specific tuning recipe or a replacement for reliability incident and failure-handling practices.
+description: Use when investigating slow or resource-heavy software, setting performance objectives, comparing implementations, or deciding whether optimization is worthwhile. Workload-based and correctness-preserving. Not a tuning recipe.
 ---
 
 # Improve performance with evidence

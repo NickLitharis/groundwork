@@ -1,6 +1,6 @@
 ---
 name: portability-principles
-description: Use when code must run on other platforms, runtimes, or dependency versions; when deciding which platform features to depend on; or when isolating platform-specific code. Favors stable abstractions and open standards over perishable platform details. Not a guide to a specific cross-platform toolkit or build system.
+description: Use when code must run on other platforms, runtimes, or dependency versions, or when isolating platform-specific code. Favors stable abstractions and open standards. Not a cross-platform toolkit guide.
 ---
 
 # Depend on stable interfaces, not perishable details
@@ -13,7 +13,7 @@ The Unix tradition treats the operating-system interface as the stable part and 
 
 ## Lean on open standards
 
-Prefer open standards and widely implemented specifications over vendor-specific or short-lived technologies. The book's observation is that projects often outlive their expected lifetimes, so a choice that looks temporary frequently becomes permanent.
+Prefer open standards and widely implemented specifications over vendor-specific or short-lived technologies. Projects often outlive their expected lifetimes, so a choice that looks temporary frequently becomes permanent.
 
 ## Treat throwaway code as long-lived
 
@@ -29,9 +29,5 @@ Some code must depend on a platform. Keep those dependencies in a small, named p
 - Dependencies on a platform detail that the project does not control.
 - Platform-specific code spread across the codebase instead of isolated.
 - Choices of perishable technologies that were made for convenience and now block a change.
-
-## Scope
-
-The book's portability chapter is grounded in Unix history: porting between processor families, and the operating system as the stable layer. Its examples and specific claims about C, Unix variants, and standards of the 1970s through 2000s are dated. This skill does not distill them, and it does not cover modern container, cloud, or language-runtime portability, which were not inspected.
 
 For the scope and limits of the sources, see [sources](references/sources.md). Related disciplines: [configuration](../configuration-principles/SKILL.md) for platform-dependent settings, [modularity](../modularity-principles/SKILL.md) for isolating platform code behind an interface, [evolution](../evolution-principles/SKILL.md) for changes to dependencies.

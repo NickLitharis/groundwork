@@ -23,3 +23,7 @@ This skill is an original synthesis based on the opening of the portability chap
 ## Modern application
 
 - Isolating platform code behind a named boundary is an application of the chapter's principle to modern build and deployment targets.
+
+## Scope note (moved from SKILL.md)
+
+The book's portability chapter is grounded in Unix history: porting between processor families, and the operating system as the stable layer. Its examples and specific claims about C, Unix variants, and standards of the 1970s through 2000s are dated. This skill does not distill them. It does not cover modern container, cloud, or language-runtime portability, which were not inspected.

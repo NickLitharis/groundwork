@@ -1,6 +1,6 @@
 ---
 name: unix-philosophy-principles
-description: Use when deciding a program's scope, whether a feature belongs in a tool or library, how a new component should compose with existing ones, or when a design is growing large or clever. Applies the Unix design rules as tradeoff tests. Not a mandate for microservices, text-only interfaces, or any particular toolchain.
+description: Use when deciding a program's scope, whether a feature belongs in a tool or library, or whether a design has grown too large or clever. Applies the Unix design rules as tradeoff tests. Not a mandate for microservices.
 ---
 
 # Design with the Unix rules as tests
@@ -29,8 +29,8 @@ This skill only maps the rules to their owners. Optimization (Rule of Optimizati
 
 - Growing one program to cover adjacent jobs instead of connecting two small ones.
 - Adding a clever abstraction where a plain function or data structure would do.
-- Keeping a design because effort was already spent on it. The book describes this as overinvestment in failed approaches.
+- Keeping a design because effort was already spent on it. This is overinvestment in a failed approach.
 - Treating the rules as a reason to split systems into many services. The rules govern interfaces and responsibilities, not deployment topology.
-- Treating economy as a reason to skip maintainability. The book's "programmer time is expensive" rule is a trade-off stated for its time; weigh the current cost of machine time and of maintenance before applying it.
+- Treating economy as a reason to skip maintainability. The rule that programmer time is expensive is a trade-off from its era; weigh the current cost of machine time and of maintenance before applying it.
 
 For the scope of the sources and their dated claims, see [sources](references/sources.md). Related disciplines: [modularity](../modularity-principles/SKILL.md) for boundaries, [composition](../composition-principles/SKILL.md) for how parts connect, [interface](../interface-principles/SKILL.md) for user-facing surfaces.

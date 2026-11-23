@@ -1,6 +1,6 @@
 ---
 name: reliability-principles
-description: Use when designing or changing services, jobs, APIs, or stateful systems where partial failure, timeouts, retries, overload, concurrency, or recovery can affect user outcomes. Helps set fit-for-purpose reliability objectives and bound failure handling. Not a mandate to add distributed-systems machinery to a local script or to replace operational runbooks.
+description: Use when designing or changing services, jobs, or stateful systems where partial failure, timeouts, retries, overload, concurrency, or recovery affect outcomes. Not a mandate for distributed machinery in a local script.
 ---
 
 # Make reliability claims testable

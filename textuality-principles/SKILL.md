@@ -1,6 +1,6 @@
 ---
 name: textuality-principles
-description: Use when designing a file format, a wire protocol, a record or log format, or any data that programs or people exchange; deciding between text and binary; or reviewing a format for transparency and encapsulation. Favors human-readable representations unless a measured need justifies otherwise. Not a guide to any particular serialization library.
+description: Use when designing a file format, wire protocol, or record or log format, or deciding text versus binary for data that programs or people exchange. Favors readable formats unless a measured need says otherwise.
 ---
 
 # Make data formats readable first
@@ -17,11 +17,11 @@ Text formats discourage elaborate, densely encoded structure. That limitation he
 
 ## Pause before designing a binary format
 
-A complex binary format or protocol is a strong signal to stop and reconsider. Before committing to binary for speed, measure the text version. If size is the concern, compression on a text stream is often a cleaner answer than a binary layout. The book's anecdote of a binary device file that was replaced by plain text, with negligible speed penalty, is one example of this trade-off.
+A complex binary format or protocol is a strong signal to stop and reconsider. Before committing to binary for speed, measure the text version. If size is the concern, compression on a text stream is often a cleaner answer than a binary layout. A binary device file replaced by plain text, with negligible speed penalty, is one example of this trade-off.
 
 ## Keep the format's own rules consistent
 
-Use one convention for delimiters, escaping, comments, and versioning across a format family. The book catalogs many file metaformats, including delimiter-separated, record-based, and key-value styles. This skill does not endorse any one of them; choose the simplest that the data needs and document its rules.
+Use one convention for delimiters, escaping, comments, and versioning across a format family. Delimiter-separated, record-based, and key-value styles are all common. Choose the simplest that the data needs and document its rules.
 
 ## Watch for these failure modes
 

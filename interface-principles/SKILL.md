@@ -1,6 +1,6 @@
 ---
 name: interface-principles
-description: Use when designing a command-line interface or a public function or module interface: choosing defaults, deciding what goes to standard output versus standard error, making behavior discoverable, or deciding whether an interface should be scriptable, interactive, or both. Covers general interface principles, not HTTP or REST API design.
+description: Use when designing a command-line or function interface: defaults, stdout versus stderr, exit status, discoverability, or scriptability. General interface principles, not HTTP or REST API design.
 ---
 
 # Design interfaces that do the expected thing
@@ -21,11 +21,11 @@ The same principle applies to visible output in general. Each unneeded line is a
 
 ## Make success and failure distinguishable
 
-A script can react only to what the program reports through its exit status and stderr. Use zero exit status for success and a nonzero status for failure, and document any specific codes the tool promises. Include enough context in the diagnostic to act on the failure, without secrets. Do not promise that piped output is atomic: say whether malformed input can leave partial output. Accept input leniently only through an explicit, documented mode; the book's warning applies here, since generous specifications are fine but silently lenient implementations spread incompatibility. Details and examples are in [CLI contracts](references/cli-contracts.md).
+A script can react only to what the program reports through its exit status and stderr. Use zero exit status for success and a nonzero status for failure, and document any specific codes the tool promises. Include enough context in the diagnostic to act on the failure, without secrets. Do not promise that piped output is atomic: say whether malformed input can leave partial output. Accept input leniently only through an explicit, documented mode; be generous in what the specification allows, but do not let an implementation silently accept malformed input, because that spreads incompatibility. Details and examples are in [CLI contracts](references/cli-contracts.md).
 
 ## Delegate to familiar tools
 
-When a task is better done by a tool the user already knows, let the user choose that tool. The book's example is editing: a program that needs substantial text entry should call the user's editor rather than embed its own.
+When a task is better done by a tool the user already knows, let the user choose that tool. A program that needs substantial text entry should call the user's editor rather than embed its own.
 
 ## Make interfaces scriptable and inspectable
 
@@ -38,9 +38,5 @@ An interface should behave the same way when a person uses it and when a script 
 - Prompts that cannot be bypassed in scripts.
 - Errors that do not identify the failing input or the next step.
 - Default behavior that changes without notice.
-
-## Scope
-
-The book's discussion of CLI versus visual interfaces and its named interface patterns (filter, source, sink, cantrip, roguelike, CLI server) were listed but not reviewed in detail for this skill. This skill does not distill them. HTTP and REST API design, including resource naming and status codes, is outside this skill's scope and needs its own sources.
 
 For the scope and limits of the sources, see [sources](references/sources.md). Related disciplines: [configuration](../configuration-principles/SKILL.md) for settings that shape the interface, [communication](../communication-principles/SKILL.md) for messages to people, [composition](../composition-principles/SKILL.md) for how interfaces connect.

@@ -1,6 +1,6 @@
 ---
 name: review-principles
-description: Use when judging a change, a repository, or a design before it ships: deciding what a review must check, whether a finding is real, how severe it is, how a reviewer independent of the author should work, and when a review is finished. Not the mechanics of a particular review tool, loop, or report template, and not test design (testing-principles owns that).
+description: Use when judging a change, repository, or design before it ships: what a review must check, whether a finding is real, its severity, how an independent reviewer works, and when a review ends. Not test design.
 ---
 
 # Review to find what would break, and say why

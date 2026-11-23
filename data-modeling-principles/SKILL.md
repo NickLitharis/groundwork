@@ -1,6 +1,6 @@
 ---
 name: data-modeling-principles
-description: Use when defining or reviewing the meaning, identity, invariants, relationships, time semantics, ownership, or representation of data in a domain, API, file, message, database, or analytical model. Helps make important distinctions explicit and choose a shape that fits real consumers. Not a migration/rollout guide or runtime-failure playbook.
+description: Use when defining or reviewing the meaning, identity, invariants, relationships, or representation of data in a domain, API, file, message, or database. Not a migration or runtime-failure playbook.
 ---
 
 # Model what the data means

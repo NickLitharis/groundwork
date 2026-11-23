@@ -1,6 +1,6 @@
 ---
 name: minilanguage-generation-principles
-description: Use when deciding whether a problem needs a configuration language, rules syntax, template, or other minilanguage, or whether to generate code or data instead of writing or editing it by hand. Covers when a minilanguage pays for itself and how generated artifacts should stay traceable. Not a guide to any parser generator or DSL framework.
+description: Use when deciding whether a problem needs a minilanguage, rules syntax, or template, or whether output should be generated rather than hand-edited. Covers when a language pays for itself. Not a parser-generator guide.
 ---
 
 # Choose the least powerful language that does the job

@@ -27,3 +27,7 @@ This skill is an adaptation. The source material concerns the output of Unix pro
 ## Migrated from practitioner style skills (not books)
 
 - "Write plain prose" draws on a plain-English skill that follows the controlled-language style of ASD-STE100 (inspected: its document rules on sentence length, active voice, modal verbs, one word one meaning, and condition before command; the STE standard itself was not inspected). The bans on generated-text habits draw on a rewrite skill that lists AI writing patterns (inspected: its list of patterns and its rule to keep every supported claim). Neither source is a book. The skills' exact word lists and numeric limits are not copied.
+
+## Scope note (moved from SKILL.md)
+
+The Unix sources discuss program output, not conversational replies. The rules in this skill are applied to agent messages as an adaptation. The book's guidance on attention and terseness is the main grounding. No inspected source addresses language models or chat interfaces.

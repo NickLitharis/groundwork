@@ -1,6 +1,6 @@
 ---
 name: communication-principles
-description: Use when the agent reports results, explains what changed, asks the user for a decision, or decides how much detail to show. Applies the Unix rules of silence, repair, and least surprise to messages to the user. Not a general prose style guide, and not a template for every reply.
+description: Use when reporting results, failures, or open questions to the user, or deciding how much detail a reply needs. Applies silence, failure reporting, and plain prose to agent messages. Not a general style guide.
 ---
 
 # Speak to the user the way a good tool reports
@@ -42,9 +42,5 @@ Do not change facts while editing prose. Keep every name, number, quote, and cla
 - Vague claims such as "should work" in place of what was run and what it showed.
 - Invented terminology for a concept the user already named.
 - Questions that could have been answered from the request or the code.
-
-## Scope
-
-The Unix sources discuss program output, not conversational replies. The rules here are applied to agent messages as an adaptation. The book's guidance on attention and terseness is the main grounding; there is no claim that the source addresses language models or chat interfaces. The plain-prose section draws on practitioner style guides for controlled and plain English, and on a practitioner rewrite procedure for removing generated-text habits. Those sources are not books and are listed in the sources file.
 
 For the scope and limits of the sources, see [sources](references/sources.md). Related disciplines: [interface](../interface-principles/SKILL.md) for command-line output, [transparency](../transparency-principles/SKILL.md) for making failures inspectable, [debugging](../debugging-principles/SKILL.md) for reporting a cause.

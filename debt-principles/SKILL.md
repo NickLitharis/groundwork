@@ -1,6 +1,6 @@
 ---
 name: debt-principles
-description: Use when deliberately taking a shortcut that defers work, recording a known limitation in code, or reviewing the deferred work already in a codebase. Covers naming each shortcut's limit and its upgrade trigger, and keeping the record current so a deferral cannot quietly become permanent. Not a rule for when to take shortcuts; engineering-principles owns that decision.
+description: Use when deliberately deferring work with a shortcut, recording a known limitation in code, or reviewing deferrals already in a codebase. Covers each shortcut's limit and upgrade trigger. Not when to take a shortcut.
 ---
 
 # Record every deferral with its limit and its trigger
