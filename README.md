@@ -13,7 +13,7 @@
   <a href="#evaluation">Evaluation</a>
 </p>
 
-Groundwork is a collection of twenty-three focused skills for coding agents. Each connects engineering principles to concrete decisions about scope, design, failures, data, performance, and collaboration. Use the skills with your agent's native loader or have it read the Markdown directly.
+Groundwork is a collection of twenty-four focused skills for coding agents. Each connects engineering principles to concrete decisions about scope, design, failures, data, performance, and collaboration. Use the skills with your agent's native loader or have it read the Markdown directly.
 
 ## Quick start
 
@@ -68,6 +68,7 @@ Planning and engineering provide the foundations. Load specialist depth when the
 | [Communication](communication-principles/SKILL.md) | Reporting results, failures, or questions to the user. |
 | [Review](review-principles/SKILL.md) | Judging a change, repository, or design before it ships. |
 | [Debt](debt-principles/SKILL.md) | Deferring work on purpose, or reviewing the deferrals already in a codebase. |
+| [UI design](ui-design-principles/SKILL.md) | Designing a user interface's look, layout, motion, or the words on screen, including accessibility floors. |
 
 The boundaries matter. Data modeling defines meaning; evolution manages a change to an existing contract. Debugging seeks causes; testing assesses behavior. Performance investigates measured costs; reliability handles operational failure. Version control manages repository history, not deployment or data rollback. Each newer skill owns one concern: unix-philosophy names the design rules, modularity owns boundaries, composition owns connections, and interface owns the user-facing contract. Engineering and planning point to these skills rather than restating them.
 
@@ -145,6 +146,7 @@ Read portability-principles/SKILL.md. Isolate the file-locking code that differs
 Read communication-principles/SKILL.md. Write the final report on this migration, including what was not verified.
 Read review-principles/SKILL.md. Review this change for correctness, safety, and load before it ships.
 Read debt-principles/SKILL.md. Record this temporary single-process cache with its limit and the trigger for replacing it.
+Read ui-design-principles/SKILL.md. Review this checkout form's contrast, error messages, and touch targets before the design is handed off.
 ```
 
 </details>
@@ -196,6 +198,7 @@ Unix philosophy contributes cohesion, composition, and measurement without requi
 | Communication | [Sources and limits](communication-principles/references/sources.md). |
 | Review | [Sources and limits](review-principles/references/sources.md). |
 | Debt | [Sources and limits](debt-principles/references/sources.md). |
+| UI design | [Sources and limits](ui-design-principles/references/sources.md), including the WCAG and Nielsen Norman sources checked for the accessibility floors. |
 | Collection plan (book sources) | [Source registry](source-registry.md), with verification method and status for each source. |
 
 </details>
@@ -223,7 +226,7 @@ The foundations use original synthesis informed by these sources. The linked not
 
 Skill structure and reference links have been validated. Automatic selection and a comparative effectiveness benefit for the suite have not been established.
 
-Earlier local experiments evaluated engineering and planning, not the current suite. The thirteen skills added after the original ten (eleven Unix-derived skills, review, and debt) have not been evaluated at all. Several principles were also migrated into existing skills (testing, evolution, documentation, communication) after the original evaluation, so those skills no longer match the evaluated text. Research drafts, evaluation tooling, and run artifacts are excluded from the published collection.
+Earlier local experiments evaluated engineering and planning, not the current suite. The fourteen skills added after the original ten (eleven Unix-derived skills, review, debt, and UI design) have not been evaluated at all. Several principles were also migrated into existing skills (testing, evolution, documentation, communication) after the original evaluation, so those skills no longer match the evaluated text. Research drafts, evaluation tooling, and run artifacts are excluded from the published collection.
 
 <details>
 <summary>Initial specialist smoke results (2026-11-21)</summary>
