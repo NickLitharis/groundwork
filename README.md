@@ -13,7 +13,7 @@
   <a href="#evaluation">Evaluation</a>
 </p>
 
-Groundwork is a collection of ten focused skills for coding agents. Each connects engineering principles to concrete decisions about scope, design, failures, data, performance, and collaboration. Use the skills with your agent's native loader or have it read the Markdown directly.
+Groundwork is a collection of twenty-three focused skills for coding agents. Each connects engineering principles to concrete decisions about scope, design, failures, data, performance, and collaboration. Use the skills with your agent's native loader or have it read the Markdown directly.
 
 ## Quick start
 
@@ -41,7 +41,7 @@ These are intended behaviors, not measured claims of improvement. Groundwork com
 
 ## The skills
 
-Planning and engineering provide the foundations. Load specialist depth when the task needs it; a small edit does not need ten skill reads or a planning document.
+Planning and engineering provide the foundations. Load specialist depth when the task needs it; a small edit does not need many skill reads or a planning document.
 
 | Skill | Reach for it when… |
 |---|---|
@@ -55,8 +55,21 @@ Planning and engineering provide the foundations. Load specialist depth when the
 | [Performance](performance-principles/SKILL.md) | A workload is slow, resource-heavy, or scaling poorly. |
 | [Data modeling](data-modeling-principles/SKILL.md) | Identity, relationships, or the meaning of data needs care. |
 | [Version control](version-control-principles/SKILL.md) | Changes need recording, integration, or safe recovery. |
+| [Unix philosophy](unix-philosophy-principles/SKILL.md) | Deciding a component's scope, or whether a design has grown too large or clever. |
+| [Modularity](modularity-principles/SKILL.md) | Choosing module boundaries, or judging whether a module hides its decisions. |
+| [Textuality](textuality-principles/SKILL.md) | Designing a file format, protocol, or record that programs or people exchange. |
+| [Transparency](transparency-principles/SKILL.md) | Making behavior inspectable, or deciding how failures should stay visible. |
+| [Composition](composition-principles/SKILL.md) | Choosing how programs or components connect: pipes, subprocesses, sockets, or RPC. |
+| [Minilanguage and generation](minilanguage-generation-principles/SKILL.md) | Deciding whether a problem needs a minilanguage, or whether output should be generated. |
+| [Configuration](configuration-principles/SKILL.md) | Adding settings, or deciding where they live and how they override each other. |
+| [Interface](interface-principles/SKILL.md) | Designing a command-line or function interface: output, errors, exit status, and scripting. |
+| [Documentation](documentation-principles/SKILL.md) | Deciding what to document and how to organize it for the reader's need. |
+| [Portability](portability-principles/SKILL.md) | Code must run on other platforms, runtimes, or dependency versions. |
+| [Communication](communication-principles/SKILL.md) | Reporting results, failures, or questions to the user. |
+| [Review](review-principles/SKILL.md) | Judging a change, repository, or design before it ships. |
+| [Debt](debt-principles/SKILL.md) | Deferring work on purpose, or reviewing the deferrals already in a codebase. |
 
-The boundaries matter. Data modeling defines meaning; evolution manages a change to an existing contract. Debugging seeks causes; testing assesses behavior. Performance investigates measured costs; reliability handles operational failure. Version control manages repository history, not deployment or data rollback.
+The boundaries matter. Data modeling defines meaning; evolution manages a change to an existing contract. Debugging seeks causes; testing assesses behavior. Performance investigates measured costs; reliability handles operational failure. Version control manages repository history, not deployment or data rollback. Each newer skill owns one concern: unix-philosophy names the design rules, modularity owns boundaries, composition owns connections, and interface owns the user-facing contract. Engineering and planning point to these skills rather than restating them.
 
 ## Install
 
@@ -69,7 +82,7 @@ Use your agent's documented project-local or user-wide skill directory. Copy or 
 For a local checkout on a system with Bash and symbolic links, set `GROUNDWORK_SKILLS_DIR` to that directory, then run this snippet from the checkout root. Existing destinations are left untouched.
 
 <details>
-<summary>Link all ten skills from a local checkout</summary>
+<summary>Link all skills from a local checkout</summary>
 
 
 ```bash
@@ -105,7 +118,7 @@ Ask the agent to read the relevant `SKILL.md` from this checkout and follow its 
 Use your agent's native skill-selection mechanism, or ask it to read a skill directly. Automatic selection is agent-dependent and not guaranteed. For example, from this checkout:
 
 <details>
-<summary>Example requests for all ten skills</summary>
+<summary>Example requests for the skills</summary>
 
 
 ```text
@@ -119,6 +132,19 @@ Read security-principles/SKILL.md. Review tenant authorization across every path
 Read performance-principles/SKILL.md. Investigate this endpoint's tail latency on a representative workload.
 Read data-modeling-principles/SKILL.md. Model purchase identity, currency, and historical prices.
 Read version-control-principles/SKILL.md. Integrate these branches while preserving unrelated work.
+Read unix-philosophy-principles/SKILL.md. Decide whether this log-rotation feature belongs in the existing tool or a new one.
+Read modularity-principles/SKILL.md. Judge whether this wrapper class hides a decision or only forwards calls.
+Read textuality-principles/SKILL.md. Choose a format for the nightly export that finance can open and check by hand.
+Read transparency-principles/SKILL.md. Make this batch job's failures visible to the operator without changing its output.
+Read composition-principles/SKILL.md. Decide how the importer should receive records from the parser.
+Read minilanguage-generation-principles/SKILL.md. Decide whether the discount rules need a language or a table.
+Read configuration-principles/SKILL.md. Decide where the new retry-limit setting belongs and how it overrides defaults.
+Read interface-principles/SKILL.md. Review the exit status and stderr behavior of this CLI for scripted use.
+Read documentation-principles/SKILL.md. Decide which parts of this library need a tutorial, a how-to, and a reference.
+Read portability-principles/SKILL.md. Isolate the file-locking code that differs between Linux and Windows.
+Read communication-principles/SKILL.md. Write the final report on this migration, including what was not verified.
+Read review-principles/SKILL.md. Review this change for correctness, safety, and load before it ships.
+Read debt-principles/SKILL.md. Record this temporary single-process cache with its limit and the trigger for replacing it.
 ```
 
 </details>
@@ -142,13 +168,13 @@ Unix philosophy contributes cohesion, composition, and measurement without requi
 ### Source index
 
 <details>
-<summary>Browse source notes for all ten skills</summary>
+<summary>Browse source notes for all skills</summary>
 
 
 | Skill | Detailed provenance and inspected-source limits |
 |---|---|
-| Planning | [Planning foundations](planning-principles/references/chapter-foundations.md), [project practices and reuse](planning-principles/references/evidence-and-project-practices.md), and [complexity and optimization](planning-principles/references/complexity-and-optimization.md). |
-| Engineering | [Sources and scope](engineering-principles/references/sources.md), [design foundations](engineering-principles/references/chapter-foundations.md), [complexity and performance](engineering-principles/references/complexity-performance.md), and [debugging and maintenance](engineering-principles/references/debugging-maintenance.md). |
+| Planning | [Planning foundations](planning-principles/references/chapter-foundations.md). |
+| Engineering | [Sources and scope](engineering-principles/references/sources.md), [design foundations](engineering-principles/references/chapter-foundations.md), [complexity](engineering-principles/references/complexity.md), and [competing principles](engineering-principles/references/tradeoffs.md). |
 | Debugging | [Sources and scope](debugging-principles/references/sources.md). |
 | Testing | [Sources and scope](testing-principles/references/sources.md). |
 | Evolution | [Sources and scope](evolution-principles/references/sources.md). |
@@ -157,8 +183,24 @@ Unix philosophy contributes cohesion, composition, and measurement without requi
 | Performance | [Books, current documentation, and adaptations](performance-principles/references/sources.md). |
 | Data modeling | [Book foundations and current format semantics](data-modeling-principles/references/sources.md). |
 | Version control | [Book sections, command semantics, and collaboration policy](version-control-principles/references/sources.md). |
+| Unix philosophy | [Sources and limits](unix-philosophy-principles/references/sources.md). |
+| Modularity | [Sources and limits](modularity-principles/references/sources.md). |
+| Textuality | [Sources and limits](textuality-principles/references/sources.md). |
+| Transparency | [Sources and limits](transparency-principles/references/sources.md). |
+| Composition | [Sources and limits](composition-principles/references/sources.md). |
+| Minilanguage and generation | [Sources and limits](minilanguage-generation-principles/references/sources.md). |
+| Configuration | [Sources and limits](configuration-principles/references/sources.md). |
+| Interface | [Sources and limits](interface-principles/references/sources.md) and [CLI contracts](interface-principles/references/cli-contracts.md). |
+| Documentation | [Sources and limits](documentation-principles/references/sources.md). |
+| Portability | [Sources and limits](portability-principles/references/sources.md). |
+| Communication | [Sources and limits](communication-principles/references/sources.md). |
+| Review | [Sources and limits](review-principles/references/sources.md). |
+| Debt | [Sources and limits](debt-principles/references/sources.md). |
+| Collection plan (book sources) | [Source registry](source-registry.md), with verification method and status for each source. |
 
 </details>
+
+The collection plan for the book-derived skills has its own registry, which records how each source was checked: [Source registry](source-registry.md). Entries marked HTTP only were checked for response status, not content.
 
 <details>
 <summary>Planning and engineering foundations bibliography</summary>
@@ -179,9 +221,9 @@ The foundations use original synthesis informed by these sources. The linked not
 
 ## Evaluation
 
-Skill structure and reference links have been validated. Automatic selection and a comparative effectiveness benefit for the current ten-skill suite have not been established.
+Skill structure and reference links have been validated. Automatic selection and a comparative effectiveness benefit for the suite have not been established.
 
-Earlier local experiments evaluated engineering and planning, not the current ten-skill suite. Research drafts, evaluation tooling, and run artifacts are excluded from the published collection.
+Earlier local experiments evaluated engineering and planning, not the current suite. The thirteen skills added after the original ten (eleven Unix-derived skills, review, and debt) have not been evaluated at all. Several principles were also migrated into existing skills (testing, evolution, documentation, communication) after the original evaluation, so those skills no longer match the evaluated text. Research drafts, evaluation tooling, and run artifacts are excluded from the published collection.
 
 <details>
 <summary>Initial specialist smoke results (2026-11-21)</summary>

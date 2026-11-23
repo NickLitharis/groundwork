@@ -31,6 +31,14 @@ Separate deployment rollback from data rollback. Reverting a binary may work whi
 
 Do not prescribe a compatibility shim by default. Keep one only when it serves a known active consumer or a bounded migration need; remove it when its retirement condition is met. Likewise, “small steps” should keep changes understandable and recoverable without fragmenting a coherent migration into unsafe partial states.
 
+## Find what a change breaks outside its diff
+
+A text search finds callers; it does not find every break. Ask what the change is safe because of: usually one or two facts, such as "this only removes entries that are already expired." Most of the risk clears if those facts hold, so spend the effort proving them.
+
+Search stops at boundaries. Check the source of libraries at the version the project pins, timing such as async order, teardown, and retries, and data that leaves the code: API responses, stored columns, file formats, configuration, and other languages that read the same data.
+
+Grade each key fact by proof. Saying it is worthless alone. Pointing at a file and line is weak. Tracing the failure path and showing it cannot be reached is stronger. The strongest is a script or test against the real code that fails if the fact is wrong, and cheap enough to write for most facts. Report each fact with its grade, the command, and its output, and list what stayed unproven. A convincing write-up is not proof, and finding a real break ends the analysis with a repro.
+
 ## Check the result
 
 Choose checks based on the boundary changed: behavioral characterization for a refactor; contract tests or consumer evidence for an API/message change; migration tests on representative prior data; mixed-version or replay checks when those states can occur; and post-cutover observations before destructive cleanup. Green local tests are useful evidence, not a guarantee of external compatibility.

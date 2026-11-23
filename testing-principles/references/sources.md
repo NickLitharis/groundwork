@@ -27,3 +27,7 @@ Explicit recommendations to track flaky-test rates statistically, compare condit
 3. **Intermittent parallel failure.** Record outcomes across controlled worker/order/cache conditions and compare failure rates, then inspect a predicted synchronization path. Why: deterministic replay may be unavailable, while statistical comparisons can prioritize hypotheses. Check sample conditions and uncertainty; treat a rate association as a clue until the mechanism or a discriminating experiment supports causality.
 
 The examples are applications, not reported experiments in the cited chapters. Choose verification proportional to the contract and risk; no coverage percentage or test method alone establishes correctness.
+
+## Migrated from practitioner skills (not books)
+
+The section "Prove a fix" was extracted from two local practitioner procedures: a test-first bug-fix runbook (`ds-tdd`) and an edit-check-read loop (`ds-verify-loop`). Inspected: their steps, stop conditions, and rules (never weaken assertions, read the first error, change one thing per iteration, paste output as evidence). No book was inspected for this section. The procedures' own step lists are not reproduced; they remain in the source skills.

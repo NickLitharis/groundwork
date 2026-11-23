@@ -19,11 +19,11 @@ Scale this loop to risk: a local rename needs little ceremony; a shared API or p
 
 ## Debugging and repository workflow
 
-Treat a user-reported failure as a reproduction; do not ask them to repeat it merely to confirm it. Separate observed behavior from hypotheses, then gather evidence that distinguishes likely causes. Use a focused reproduction, targeted inspection, or debugger rather than changing code by guesswork. Fix the cause, preserve useful diagnostics without exposing secrets, and never suppress an error to make the path appear successful. Add missing regression coverage and verify relevant recovery behavior when failure can leave partial state.
+Diagnose failures with [debugging-principles](../debugging-principles/SKILL.md), not by guesswork in the code.
 
 Use the repository's existing build, test, run, and generation entry points. Read their documented prerequisites and invoke the same commands humans and CI use; do not add a second toolchain or require Make where the repository has another suitable interface. A test command with no matching tests is no proof.
 
-Maintain useful contributor documentation: preserve the why, invariants, and key flows that code alone does not explain; update affected docs, choosing user reference, tutorial, or troubleshooting material for the audience. Avoid broad doc rewrites unrelated to the change.
+Update affected documentation as part of the change, following [documentation-principles](../documentation-principles/SKILL.md).
 
 ## Design principles
 
@@ -41,21 +41,17 @@ Avoid plugins, generic frameworks, configuration layers, or extension points wit
 
 ### Complexity across the system
 
-Distinguish essential complexity (required by the problem), optional complexity (a capability with a cost), and accidental complexity (avoidable difficulty in implementing specified behavior). Use these as reasoning categories, not a feature quota. Apply them across implementation, interface, integration, and users’ effort and error risk: lowering cost in one place can shift it elsewhere. Remove accidental complexity; keep optional capability when its user value justifies its full-life cost. Under a deadline, compare delivery value now with end-to-end effort, support, and maintenance; fewer lines or features alone do not establish lower total cost. For examples, see [Complexity, Interfaces, and Performance](references/complexity-performance.md).
+Distinguish essential complexity (required by the problem), optional complexity (a capability with a cost), and accidental complexity (avoidable difficulty in implementing specified behavior). Use these as reasoning categories, not a feature quota. Apply them across implementation, interface, integration, and users’ effort and error risk: lowering cost in one place can shift it elsewhere. Remove accidental complexity; keep optional capability when its user value justifies its full-life cost. Under a deadline, compare delivery value now with end-to-end effort, support, and maintenance; fewer lines or features alone do not establish lower total cost. For examples, see [Complexity](references/complexity.md).
 
-### Cohesion, coupling, and information hiding
+### Module boundaries
 
-Group code that changes for the same reason; separate concerns that change independently. Hide volatile implementation choices behind a small, coherent interface. Prefer a deep module that does useful work over a chain of pass-through wrappers.
-
-An interface may be somewhat general-purpose when that lets a shared mechanism serve identifiable callers without embedding one caller's policy. Keep it no more general than current uses justify: guessed future needs can burden present callers. Choose a specialized interface when its contract genuinely is specific.
-
-Single responsibility concerns a coherent reason to change, not one method per class. Low coupling means consumers need little knowledge of internals, not that every call requires an interface. Keep dependency directions explicit and avoid cycles where practical.
+Module boundaries, depth, and information hiding are owned by [modularity-principles](../modularity-principles/SKILL.md). Apply that skill when deciding where a boundary belongs. This skill adds one constraint: an interface should be no more general than its current callers justify, because guessed future needs burden present callers.
 
 ### Abstraction and DRY
 
 DRY means one authoritative representation of a piece of knowledge, not eliminating every similar-looking sequence. Share logic when callers express the same rule and should evolve together. Keep superficially similar code separate when it belongs to different concepts or lifecycles.
 
-When knowledge also appears in generated files, identify its authoritative source and generator. Protect unrelated edits before regeneration; resolve overlapping ownership rather than overwrite user work. Update the source, run the existing generator, and inspect the derived diff. Do not hand-edit generated output as the durable fix or add generation machinery for trivial work.
+Generated files are owned by [minilanguage-generation-principles](../minilanguage-generation-principles/SKILL.md): edit the source and regenerate, never the output.
 
 Before extracting, identify the shared contract, the expected reasons for change, and the complexity the abstraction removes. Do not use a numerical repetition threshold as proof. A little duplication can cost less than the wrong coupling.
 
@@ -71,41 +67,26 @@ Use these questions where the design benefits; do not impose an object-oriented 
 
 Prefer composition over inheritance when inheritance does not model a genuine substitutable relationship. Use language-idiomatic mechanisms rather than pattern names as a goal.
 
-### Readability and least surprise
+### Readability
 
 Choose names that expose domain meaning, units, and ownership. Keep control flow and side effects easy to follow. Use comments for rationale, constraints, and non-obvious guarantees, not to narrate obvious statements.
 
 Follow repository conventions unless they cause a concrete problem. Function size, parameter count, and nesting depth are warning signs, not universal numeric limits. Extra indirection is not automatically cleaner code. Comments can preserve rationale, constraints, and an abstraction that code alone does not explain; judge their value in context rather than removing them or splitting cohesive logic to meet a length or comment-count rule.
 
-### Dependencies and performance
+### Dependencies
 
 Reuse a maintained, appropriate library for difficult established capabilities, especially cryptography and protocol handling. Evaluate fit, security, license, compatibility, operational cost, and dependency weight. Do not add a dependency for a trivial operation already served by the language or repository.
 
-Choose sensible data structures and algorithms for expected input sizes. Avoid obvious redundant work and wasteful allocation or copying. Measure suspected bottlenecks before complex optimization; benchmark representative workloads and protect correctness. Name the workload, metric, baseline, target, and stop criterion; use measures tied to actual user or system outcomes, not activity counts. Stop once the contract is met or further gain is not worth added complexity and maintenance. Decide whether the contract values latency, throughput, or resource use: batching can improve throughput while worsening response time. Do not trade away a stated latency or memory requirement for stylistic simplicity. For examples, see [Complexity, Interfaces, and Performance](references/complexity-performance.md).
+Performance measurement and optimization are owned by [performance-principles](../performance-principles/SKILL.md). This skill keeps one constraint: a stated latency or memory requirement is a contract, and simplicity does not justify breaking it.
 
-## Unix philosophy in practice
+## Other skills' ground
 
-Write cohesive components that do one job well and compose through explicit contracts. This does not require one process per function, microservices, text-only storage, or statelessness everywhere. Internal libraries with clear APIs can be equally composable.
+- Module boundaries and interface depth: [modularity-principles](../modularity-principles/SKILL.md).
+- Unix design rules, composition, and CLI and config conventions: [unix-philosophy](../unix-philosophy-principles/SKILL.md), [composition](../composition-principles/SKILL.md), [interface](../interface-principles/SKILL.md), [configuration](../configuration-principles/SKILL.md).
+- Visibility and failure reporting: [transparency](../transparency-principles/SKILL.md).
+- Behavior-preserving change and compatibility: [evolution](../evolution-principles/SKILL.md). Test design: [testing](../testing-principles/SKILL.md).
 
-- **Separate mechanism from policy.** Keep reusable computation independent of presentation, environment, and changing business choices where that separation reduces coupling.
-- **Design for composition.** Avoid hidden global state and unnecessary hardcoded paths. Make dependencies and effects explicit; let callers choose destinations where appropriate.
-- **Prefer inspectable representations.** Use simple data structures and documented formats. Text is valuable for interoperable tools; binary formats are valid when fidelity, volume, or performance requires them.
-- **Keep ordinary operation quiet, failures visible.** Silence means no irrelevant chatter, not missing result data or suppressed diagnostics.
-- **Reuse tools.** Prefer existing reliable capabilities over rebuilding them. Keep automation noninteractive when it is intended for scripts.
-
-Choose interface style by its human and machine consumers, not tradition. A function or library API, stable CLI, or filter can suit machine callers and repeatable work; human tasks may need discoverability, feedback, or direct interaction. If both are real consumers, separate domain logic from optional wrappers so they share behavior without making a GUI mandatory. Follow the simplest style that meets the contract. See [Unix interfaces](references/unix-interfaces.md) and [Complexity, Interfaces, and Performance](references/complexity-performance.md) for practical tradeoffs.
-For CLI, pipeline, and configuration design, read [Unix interfaces](references/unix-interfaces.md). When complexity, interface style, or performance tradeoffs materially shape the decision, read [Complexity, Interfaces, and Performance](references/complexity-performance.md). For competing principles and examples, read [Tradeoffs](references/tradeoffs.md). These references are conditional; none is mandatory for an unrelated local edit.
-For practical debugging, project commands, generated artifacts, maintainer documentation, and dependency evaluation examples, read [Debugging and Maintenance](references/debugging-maintenance.md).
-
-## Safe evolution and verification
-
-A refactor preserves observable behavior, including outputs, errors, side effects, and contracts consumers rely on. Do not silently fix quirks during a refactor. An intentional contract change instead updates affected tests and consumers explicitly; tests of superseded requirements are not permanent constraints.
-
-Protect public boundaries with behavior-focused tests. Reuse adequate coverage; add regression or characterization tests when an important path is unprotected. Prefer real implementations or focused fakes where practical, but use doubles to isolate genuinely costly, nondeterministic, or unsafe boundaries. Avoid assertions about private method calls or exact source wording unless those are themselves the contract.
-
-Check meaningful edge cases: malformed inputs, empty data, resource failure, and concurrency or partial writes when relevant. Do not prescribe an arbitrary coverage percentage or a full suite for every edit.
-
-Preserve public compatibility unless changing it is in scope. For durable contracts and persisted data, examine consumers, deployment order, migration, and recovery. Use expand/contract or another staged approach when old and new versions must coexist; a coordinated atomic change may suffice otherwise. Do not drop recovery paths or install compatibility shims without an actual requirement.
+Read those skills when their concern is the deciding factor. Choose the interface style by its human and machine consumers, not by tradition, and follow the simplest style that meets the contract.
 
 ## Final decision check
 

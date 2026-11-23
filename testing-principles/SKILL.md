@@ -29,6 +29,14 @@ Test-driven development is one feedback technique, not a universal entrance requ
 
 Scale effort to impact. A localized deterministic change may need a focused contract check; persistence, concurrency, compatibility, or security changes may need multiple boundaries and failure conditions. Reuse adequate existing evidence instead of adding redundant tests. Keep test selection tied to the behavior changed, not a universal coverage target.
 
+## Prove a fix
+
+When a bug has a cheap local test target, write the test first and make sure it fails for the bug, not for a typo, a missing import, or a broken setup. Then make the smallest change that makes it pass, and run the surrounding tests. Keep the failing and passing output as evidence; a fix without output is a claim.
+
+Read the full error from a run, including the first error, its file and line, and the frame in the code under test. Confirm that the failure is the reported bug and not a neighboring error before you touch production code. How to find the cause belongs to [debugging-principles](../debugging-principles/SKILL.md). Change one thing per attempt, so you know what fixed it.
+
+Never weaken, skip, or delete an assertion to make a check pass. If the test is wrong, say why and let the owner decide. When a clean test is impractical, use the closest runnable check, such as a repro command or a log check, and say why no test was written. A test that mostly exercises mocks or depends on timing does not count as protection.
+
 ## Examples
 
 - A discount function has a published rule “10% off orders of at least $100.” Test representative values below, at, and above the threshold, plus rounding and excluded products if the contract defines them. Check expected results against the approved rule, not an implementation helper reused by the test. This catches off-by-one behavior without enumerating every price.
@@ -37,5 +45,5 @@ Scale effort to impact. A localized deterministic change may need a focused cont
 
 ## Keep principles distinct from procedures
 
-This skill helps choose or interpret tests; it does not dictate a runner, exact test pyramid, report format, or mandatory test-first process. Use `ds-tdd` for its specific test-driven workflow and `ds-verify-loop` for verification after changes. `engineering-principles` addresses broader design and implementation decisions. These operational workflows complement rather than replace contract-based judgment.
+This skill helps choose or interpret tests; it does not dictate a runner, exact test pyramid, report format, or mandatory test-first process. Step-by-step runbooks for a fix loop belong to separate procedure skills, which should cite the principles above rather than restate them. `engineering-principles` addresses broader design and implementation decisions. These operational workflows complement rather than replace contract-based judgment.
 
